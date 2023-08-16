@@ -4,6 +4,12 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+### MVN ###
+.mvn
+mvnw
+mvnw.cmd
+data
+
 ### STS ###
 .apt_generated
 .classpath
@@ -32,8 +38,3 @@ build/
 ### VS Code ###
 .vscode/
 
-### MVN ###
-.mvn
-mvnw
-mvnw.cmd
-data
