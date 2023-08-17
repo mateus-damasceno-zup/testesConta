@@ -1,18 +1,13 @@
 package com.factory.contabancaria.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
 @Table(name = "TB_CONTAS")
-@Getter
-@Setter
-@AllArgsConstructor
+@Data
 @NoArgsConstructor
 public class ContasModel {
 
@@ -34,4 +29,68 @@ public class ContasModel {
     private String tipoServico;
     private BigDecimal valorFinal;
 
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNumConta() {
+        return numConta;
+    }
+
+    public void setNumConta(String numConta) {
+        this.numConta = numConta;
+    }
+
+    public String getAgencia() {
+        return agencia;
+    }
+
+    public void setAgencia(String agencia) {
+        this.agencia = agencia;
+    }
+
+    public String getNomeDoUsuario() {
+        return nomeDoUsuario;
+    }
+
+    public void setNomeDoUsuario(String nomeDoUsuario) {
+        this.nomeDoUsuario = nomeDoUsuario;
+    }
+
+    public BigDecimal getValorAtualConta() {
+        return valorAtualConta;
+    }
+
+    public void setValorAtualConta(BigDecimal valorAtualConta) {
+        this.valorAtualConta = valorAtualConta;
+    }
+
+    public BigDecimal getValorFornecido() {
+        return ValorFornecido;
+    }
+
+    public void setValorFornecido(BigDecimal valorFornecido) {
+        ValorFornecido = valorFornecido;
+    }
+
+    public String getTipoServico() {
+        return tipoServico;
+    }
+
+    public void setTipoServico(String tipoServico) {
+        this.tipoServico = tipoServico;
+    }
+
+    public BigDecimal getValorFinal() {
+        return valorFinal;
+    }
+
+    public void setValorFinal(BigDecimal valorFinal) {
+        this.valorFinal = valorFinal;
+    }
 }
