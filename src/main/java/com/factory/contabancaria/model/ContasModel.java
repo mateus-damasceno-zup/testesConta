@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 @Table(name = "TB_CONTAS")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class ContasModel {
 
     //Atributos

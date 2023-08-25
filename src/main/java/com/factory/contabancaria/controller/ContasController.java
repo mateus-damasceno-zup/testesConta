@@ -2,6 +2,7 @@ package com.factory.contabancaria.controller;
 
 import com.factory.contabancaria.DTO.ContaDTORespostaGet;
 import com.factory.contabancaria.DTO.ContasDTORespostaPost;
+import com.factory.contabancaria.mapping.MappingService;
 import com.factory.contabancaria.model.ContasModel;
 import com.factory.contabancaria.model.factory.ContaFactory;
 import com.factory.contabancaria.repository.ContasRepository;
@@ -19,9 +20,6 @@ public class ContasController {
 
     @Autowired
     ContasService contasService;
-
-    @Autowired
-    ContasRepository contasRepository;
 
     //requisições
     //GET - Pegar as informações do nosso banco
@@ -45,16 +43,16 @@ public class ContasController {
     }
 
     //- Crie um endpoint GET que selecione uma conta pelo nome do usuário.
-    @GetMapping(path="/buscaPorNome/{nome}")
-    public ResponseEntity<?> exibeUmaContaPeloNome(@PathVariable String nome){
+    @GetMapping(path = "/buscaPorNome/{nome}")
+    public ResponseEntity<?> exibeUmaContaPeloNome(@PathVariable String nome) {
 
-      List<ContasModel> contasModelList = contasService.exibeContaPorNome(nome);
-        if(contasModelList.isEmpty()){
+        List<ContasModel> contasModelList = contasService.exibeContaPorNome(nome);
+        if (contasModelList.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("usuario nao encontrado pelo nome");
         }
         List<ContaDTORespostaGet> contaDTORespostaGetList = new ArrayList<>();
 
-        for(ContasModel contasModel : contasModelList){
+        for (ContasModel contasModel : contasModelList) {
             ContaDTORespostaGet contaDTORespostaGet = new ContaDTORespostaGet();
             contaDTORespostaGet.setNumConta(contasModel.getNumConta());
 
@@ -83,7 +81,7 @@ public class ContasController {
     //- tipoServico
     @PostMapping
     public ResponseEntity<?> cadastraContaDTO(@RequestBody ContasModel contasModel, ContaFactory contaFactory) {
-        ContasModel contaNova = contasService.cadastrar(contasModel,contaFactory);
+        ContasModel contaNova = contasService.cadastrar(contasModel, contaFactory);
         ContasDTORespostaPost contasDTORespostaPost = new ContasDTORespostaPost();
 
         contasDTORespostaPost.setNomeDoUsuario(contaNova.getNomeDoUsuario());
@@ -98,9 +96,10 @@ public class ContasController {
     public ContasModel atualizarConta(@PathVariable Long id, @RequestBody ContasModel contasModel, ContaFactory contaFactory) {
         return contasService.alterar(id, contasModel, contaFactory);
     }
+
     @PutMapping(path = "/{id}/{campo}")
     public ContasModel alterarUmDado(@PathVariable Long id, @PathVariable String campo, @RequestBody ContasModel contasModel, ContaFactory contaFactory) {
-        return contasService.alterarUmDado(id,contasModel, campo, contaFactory);
+        return contasService.alterarUmDado(id, contasModel, campo, contaFactory);
     }
 
     //DELETE - Deleta uma conta já existente dentro do banco

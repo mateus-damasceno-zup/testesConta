@@ -15,4 +15,5 @@ public class ContasDTORespostaPost {
     private BigDecimal valorFornecido;
     private String tipoServico;
 
+
 }
